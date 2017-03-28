@@ -15,4 +15,4 @@ Con esta orden copiaremos el directorio ` /var/www/ ` ya comprimido en el home d
 
 Aquí podemos comprobar que funciona:
 
-![imagen-TAR-SSH]()
+![imagen-TAR-SSH](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%202/copy-tar-ssh.png)
