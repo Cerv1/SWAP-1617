@@ -7,7 +7,8 @@ Lo primero que realizaremos en esta sencilla práctica es la instalación de las
 
 Una vez tenemos ambas máquinas con el servicio **Apache** corriendo modificamos la página web que muestra por defecto el servidor, situada en la ruta ``` /var/www/html/index.html ``` y la cambiamos por una sencilla página que lo único que haga sea mostrar si es la máquina número 1 o la máquina número 2.
 
-Para comprobar que todo funciona correctamente utilizamos el comando **curl** mediante la siguiente orden: ``` curl http://ip-maquina/ ```.
+Para comprobar que todo funciona correctamente utilizamos el comando **curl** mediante la siguiente orden:
+``` curl http://ip-maquina/ ```.
 
 Lo realizamos desde ambas máquinas hacia la otra para comprobar que todo funciona correctamente:
 
