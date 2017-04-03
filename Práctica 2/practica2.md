@@ -38,6 +38,18 @@ Para configurarlo deberemos de seguir estos pasos en la máquina de respaldo:
 1. Creación de las claves mediante la orden `ssh-keygen -b 4096 -t rsa`.
 2. Copia de la clave a la máquina principal mediante la orden `ssh-copy-id user@ip-dest`.
 
+Una vez realizados estos pasos, tan solo deberemos de conectarnos a la máquina como siempre hicimos, pero ahora nos pedirá la contraseña de la clave, no del usuario de la otra máquina. Además, una vez la hemos ingresado una vez, no tendremos que volver a repetirla durante toda la sesión.
+
 Ejemplo de su uso:
 
 ![imagen-SSH](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%202/ssh-no-password.png)
+
+### 4. Actualización del directorio `/var/www` automáticamente mediante `crontab`
+
+Por último en esta práctica, se nos pide crear una tarea de `cron` de tal manera que el contenido del directorio se copie automáticamente en la máquina de respaldo cada hora.
+
+Para ello tan solo tendremos que añadir una línea al final del archivo `/etc/crontab`, que será la siguiente:
+
+`@hourly rsync -avz -e ssh user@ip-dest:/var/www/ /var/www/`
+
+De esta manera conseguiremos que a cada hora se cree una copia de seguridad automáticamente.
