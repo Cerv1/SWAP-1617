@@ -27,3 +27,17 @@ De esta manera, sustituirá todo el contenido de esta carpeta por lo que haya en
 
 Ejemplo de uso en el que clonamos el contenido de la máquina 1 en la máquina 2.
 ![imagen-RSYNC](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%202/rsync-example.png)
+
+
+### 3. Configuración de `ssh` para acceder sin que solicite contraseña.
+
+Como es lógico, no tiene mucho sentido automatizar las copias de seguridad de nuestros directorios si vamos a tener que estar pendientes de las máquinas y poniendo la contraseña cada vez que vayamos a realizar una. Para solucionar este problema podemos configurar `ssh` para que funcione a través de un esquema de **llave pública/privada**.
+
+Para configurarlo deberemos de seguir estos pasos en la máquina de respaldo:
+
+1. Creación de las claves mediante la orden `ssh-keygen -b 4096 -t rsa`.
+2. Copia de la clave a la máquina principal mediante la orden `ssh-copy-id user@ip-dest`.
+
+Ejemplo de su uso:
+
+![imagen-SSH](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%202/ssh-no-password.png)
