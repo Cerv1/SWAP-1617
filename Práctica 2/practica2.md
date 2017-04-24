@@ -19,11 +19,11 @@ Aquí podemos comprobar que funciona:
 
 ### 2. Clonar una carpeta entre las dos máquinas.
 
-Ahora realizaremos copias incrementales del directorio que queramos desde la máquina principal hacia la máquina de respaldo. Para ello utilizaremos la herramienta mencionada en el guión, `rsync`. Su uso es muy sencillo, tan solo deberemos de ejecutar el siguiente comando en la máquina de respaldo:`rsync -avz -e ssh ip-dest:/var/www/ /var/www/`
+Ahora realizaremos copias incrementales del directorio que queramos desde la máquina principal hacia la máquina de respaldo. Para ello utilizaremos la herramienta mencionada en el guión, `rsync`. Su uso es muy sencillo, tan solo deberemos ejecutar el siguiente comando en la máquina de respaldo:`rsync -avz -e ssh ip-dest:/var/www/ /var/www/`
 
 De esta manera, sustituirá todo el contenido de esta carpeta por lo que haya en la máquina principal.
 
-**Nota:** Si da error con los permisos, deberemos de ingresar el siguiente comando `sudo chown user:user -R /var/www/`. De esta manera seremos los dueños de esta carpeta y no habrá ningún inconveniente.
+**Nota:** Si da error con los permisos, deberemos ingresar el siguiente comando `sudo chown user:user -R /var/www/`. De esta manera seremos los dueños de esta carpeta y no habrá ningún inconveniente.
 
 Ejemplo de uso en el que clonamos el contenido de la máquina 1 en la máquina 2.
 ![imagen-RSYNC](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%202/rsync-example.png)
@@ -33,12 +33,12 @@ Ejemplo de uso en el que clonamos el contenido de la máquina 1 en la máquina 2
 
 Como es lógico, no tiene mucho sentido automatizar las copias de seguridad de nuestros directorios si vamos a tener que estar pendientes de las máquinas y poniendo la contraseña cada vez que vayamos a realizar una. Para solucionar este problema podemos configurar `ssh` para que funcione a través de un esquema de **llave pública/privada**.
 
-Para configurarlo deberemos de seguir estos pasos en la máquina de respaldo:
+Para configurarlo deberemos seguir estos pasos en la máquina de respaldo:
 
 1. Creación de las claves mediante la orden `ssh-keygen -b 4096 -t rsa`.
 2. Copia de la clave a la máquina principal mediante la orden `ssh-copy-id user@ip-dest`.
 
-Una vez realizados estos pasos, tan solo deberemos de conectarnos a la máquina como siempre hicimos, pero ahora nos pedirá la contraseña de la clave, no del usuario de la otra máquina. Además, una vez la hemos ingresado una vez, no tendremos que volver a repetirla durante toda la sesión.
+Una vez realizados estos pasos, tan solo deberemos conectarnos a la máquina como siempre hicimos, pero ahora nos pedirá la contraseña de la clave, no del usuario de la otra máquina. Además, una vez la hemos ingresado una vez, no tendremos que volver a repetirla durante toda la sesión.
 
 Ejemplo de su uso:
 
