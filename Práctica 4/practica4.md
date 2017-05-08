@@ -7,7 +7,7 @@ Para esta práctica, deberemos resolver 2 apartados.
 
 Para este apartado deberemos generar e instalar un certificado SSL autofirmado. Para ello, lo primero que deberemos hacer es activar el módulo SSL de Apache, generarlos y especificarle la ruta. Para ello ejecutamos las siguientes líneas:
 
-```shell
+```
 a2enmod ssl
 service apache2 restart
 mkdir /etc/apache2/ssl
@@ -20,3 +20,26 @@ Esto nos pedirá que ingresemos algunos campos tales como el código del país, 
 
 
 ### 2. Configurar las reglas del cortafuegos para proteger la granja web.
+
+La mejor opción es configurar nuestro firewall mediante el siguiente script, que usa la orden `iptables`.
+```
+iptables -F
+iptables -X
+iptables -Z
+iptables -t nat -F
+
+iptables -P INPUT DROP
+iptables -P OUTPUT DROP
+iptables -P FORWARD DROP
+
+iptables -A INPUT -i lo -j ACCEPT
+iptables -A OUTPUT -o lo -j ACCEPT
+
+iptables -A INPUT -p tcp --dport 22  -j ACCEPT
+iptables -A INPUT -p tcp --dport 80  -j ACCEPT
+iptables -A INPUT -p tcp --dport 443 -j ACCEPT
+
+iptables -A OUTPUT -p tcp --sport 22  -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 80  -j ACCEPT
+iptables -A OUTPUT -p tcp --sport 443 -j ACCEPT
+```
