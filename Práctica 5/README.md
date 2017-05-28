@@ -27,8 +27,7 @@ Después de realizar esta copia **desbloqueamos las tablas** para que puedan vol
 
 ### 3. Restaurar dicha copia en la segunda máquina (clonado manual de la BD).
 
-Una vez realizada la copia de seguridad de nuestra BD, podemos clonar manualmente la BD a nuestra máquina de respaldo de distintas maneras, tal y como vimos en la [práctica 2](https://github.com/Cerv1/SWAP-1617/tree/master/Pr%C3%A1ctica%202). Cabe mencionar que para que esto funcione, la máquina de respaldo tiene que tener creada la BD ya que mysqldump contiene sentencias para rellenar la BD en el otro equipo pero no se encarga de crear la tabla. Para realizar la copia me decantaré por la opción del **pipe + ssh** ejecutando `mysqldump <database> -u root -p | ssh <user@ip-destino> mysql`y podemos comprobar que funciona en la siguiente imagen:
-
+Una vez realizada la copia de seguridad de nuestra BD, podemos clonar manualmente la BD a nuestra máquina de respaldo de distintas maneras, tal y como vimos en la [práctica 2](https://github.com/Cerv1/SWAP-1617/tree/master/Pr%C3%A1ctica%202). Cabe mencionar que para que esto funcione, la máquina de respaldo tiene que tener creada la BD ya que mysqldump contiene sentencias para rellenar la BD en el otro equipo pero no se encarga de crear la tabla. Para realizar la copia me decantaré por la opción del **pipe + ssh** ejecutando `mysqldump <database> -u root -p | ssh <user@ip-destino> mysql`y de esta manera la copia será restaurada en la máquina de respaldo, aunque como podemos pensar, no es la mejor manera de hacerlo.
 
 ### 4. Realizar la configuración maestro-esclavo de los servidores MySQL para que la replicación de datos se realice automáticamente.
 
@@ -61,6 +60,6 @@ MASTER_PASSWORD='esclavo', MASTER_LOG_FILE='<log-file>',
 MASTER_LOG_POS=<position>, MASTER_PORT=3306;
 ```
 
-y desde eeste momento todas las modificaciones realizadas en la máquina maestra serán replicadas en la máquina esclava como podemos comprobar:
+y desde este momento todas las modificaciones realizadas en la máquina maestra serán replicadas en la máquina esclava como podemos comprobar:
 
 ![master-slave](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%205/master-slave.png)
