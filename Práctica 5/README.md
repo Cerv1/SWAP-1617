@@ -63,4 +63,4 @@ MASTER_LOG_POS=<position>, MASTER_PORT=3306;
 
 y desde eeste momento todas las modificaciones realizadas en la máquina maestra serán replicadas en la máquina esclava como podemos comprobar:
 
-![slave-master](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%205/slave-master.png)
+![master-slave](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%205/master-slave.png)
