@@ -18,5 +18,10 @@ Una vez tenemos la tabla creada, probaremos a introducir algún dato para que no
 ![select-all](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%205/select-all.png)
 
 ### 2. Realizar la copia de seguridad de la BD completa usando `mysqldump`.
+
+Este paso es bastante sencillo. Lo primero es evitar que en el servidor se accedan y se cambien las BD mientras hacemos la copia de seguridad y para ello ejecutamos `FLUSH TABLES WITH READ LOCK` y acto seguido realizamos la copia mediante el siguiente comando `mysqldump <database> -u root -p > /dir-to-backup/backup.sql` y como podemos comprobar, ya tendríamos hecha nuestra copia de seguridad de la base de datos.
+
+![mysqldump](https://github.com/Cerv1/SWAP-1617/blob/master/Pr%C3%A1ctica%205/mysqldump.png)
+
 ### 3. Restaurar dicha copia en la segunda máquina (clonado manual de la BD).
 ### 4. Realizar la configuración maestro-esclavo de los servidores MySQL para que la replicación de datos se realice automáticamente.
